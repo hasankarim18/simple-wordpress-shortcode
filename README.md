@@ -1,3 +1,9 @@
+# A very simple wordpress shortcode plugin (For Reference)
+
+- It shows how to use $atts and $content in shortcode.
+- $atts keys need to lower case.
+
+```
 <?php
 /*
 Plugin Name: Tnn Shortcode Ic
@@ -40,7 +46,7 @@ class Tnn_shortcode_Ic
 
         // if (strtolower($short_code['title']) === 'post') {
         //     $short_code['title'] = get_the_title();
-        // }    
+        // }
 
         $warning = $short_code['warning'];
         $style = '';
@@ -85,3 +91,5 @@ function activate_tnn_shortcode_ic()
 {
     // Activation code here
 }
+
+```
