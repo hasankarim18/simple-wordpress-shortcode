@@ -2,6 +2,7 @@
 
 - It shows how to use $atts and $content in shortcode.
 - $atts keys need to lower case.
+- attributes need to pass by `shortcode_atts` function
 
 ```
 <?php
@@ -38,7 +39,7 @@ class Tnn_shortcode_Ic
     function shortcode_ic_hello_world($atts, $content = null, $tag = '')
     {
         $atts = array_change_key_case($atts, CASE_LOWER);
-        $short_code = shortcode_atts([
+        $attributes = shortcode_atts([
             'title' => 'Wordpress.org',
             'warning' => 'no_warning'
         ], $atts, $tag);
@@ -48,7 +49,7 @@ class Tnn_shortcode_Ic
         //     $short_code['title'] = get_the_title();
         // }
 
-        $warning = $short_code['warning'];
+        $warning = $attributes['warning'];
         $style = '';
 
         if ($warning === 'no_warning') {
@@ -58,6 +59,10 @@ class Tnn_shortcode_Ic
             $style = 'background-color:green; color:white;';
         } elseif ($warning === 'danger') {
             $style = 'background-color:red; color:white;';
+        } elseif ($warning === 'no_warnng') {
+
+        } elseif ($warning === 'no_warnng') {
+            $style = '';
         } else {
             $style = '';
         }
@@ -68,7 +73,7 @@ class Tnn_shortcode_Ic
         ob_start();
         ?>
         <div style="<?php echo $style; ?>">
-            <h2>The Warning is: <?php echo esc_html($short_code['title']); ?> </h2>
+            <h2>The Warning is: <?php echo esc_html($attributes['title']); ?> </h2>
             <?php if (!is_null($content)): ?>
                 <div class="shortcode-content">
                     <?php echo wpautop(do_shortcode($content)); ?>
