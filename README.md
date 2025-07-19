@@ -76,7 +76,7 @@ class Tnn_shortcode_Ic
             <h2>The Warning is: <?php echo esc_html($attributes['title']); ?> </h2>
             <?php if (!is_null($content)): ?>
                 <div class="shortcode-content">
-                    <?php echo wpautop(do_shortcode($content)); ?>
+                    <?php echo wp_kses_post(wpautop(do_shortcode($content))); ?>
                 </div>
             </div>
         <?php endif; ?>
