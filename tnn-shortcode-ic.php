@@ -20,6 +20,9 @@ define('TNN_BASE_PATH', plugin_dir_path(__FILE__));
 define('TNN_BASE_URL', plugins_url('', __FILE__));
 define('TNN_VERSION_', '1.0');
 
+// laoding assets manager
+
+
 
 class Tnn_shortcode_Ic
 {
@@ -28,16 +31,38 @@ class Tnn_shortcode_Ic
         add_action('plugins_loaded', [$this, 'load_dependencies']);
         add_action('init', [$this, 'init']);
 
+
+
     }
 
     function load_dependencies()
     {
+        if (file_exists(plugin_dir_path(__FILE__) . 'class-assets-manager.php')) {
+            require_once(plugin_dir_path(__FILE__) . 'class-assets-manager.php');
+        }
+        new AssetsManager();
+
         if (file_exists(TNN_BASE_PATH . 'includes/class-simple-shortcode.php')) {
             require_once(TNN_BASE_PATH . 'includes/class-simple-shortcode.php');
         }
 
+        // #including Gmap
+
+        if (file_exists(TNN_BASE_PATH . 'includes/class-gmap-shortcode.php')) {
+            require_once(TNN_BASE_PATH . 'includes/class-gmap-shortcode.php');
+        }
+
         if (file_exists(TNN_BASE_PATH . 'includes/class-shortcode-admin-page.php')) {
             require_once(TNN_BASE_PATH . 'includes/class-shortcode-admin-page.php');
+        }
+
+        /** #contact form */
+        if (file_exists(TNN_BASE_PATH . 'includes/class-contact-form.php')) {
+            error_log('Tnn_Contact_Form loaded front page');
+            require_once(TNN_BASE_PATH . 'includes/class-contact-form.php');
+
+        } else {
+            error_log('Tnn_Contact_Form not loaded front page');
         }
     }
 
@@ -47,6 +72,8 @@ class Tnn_shortcode_Ic
         load_plugin_textdomain('tnn-shortcode-ic', false, dirname(plugin_basename(__FILE__)) . '/languages');
 
     }
+
+
 
 
 

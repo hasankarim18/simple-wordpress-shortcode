@@ -27,8 +27,8 @@ class Tnn_shortcode_admin_page
 
             <div style="margin-top: 20px;">
                 <h3 style="margin-bottom: 8px;">For Success</h3>
-                <textarea readonly rows="4" onclick="this.select();" style="
-                    width: 100%;
+                <span readonly rows="4" onclick="this.select();" style="
+                    width: 50%;
                     padding: 10px;
                     border: 1px solid #ccc;
                     border-radius: 6px;
@@ -36,12 +36,29 @@ class Tnn_shortcode_admin_page
                     font-family: monospace;
                     font-size: 14px;
                     resize: none;
-                ">[tnn_highlight_message type="success"]
-                                Write your message here...                
-                                [/tnn_highlight_message]</textarea>
+                ">[tnn_highlight_message type="success" ] Write your message here...
+                    [/tnn_highlight_message]</span>
             </div>
             <div>
                 <h3>Avaiable types: "success" | "danger" | "warning" | "info" </h3>
+            </div>
+            <br><br>
+            <hr>
+            <div>
+                <h2>💬 Tnn Contact Form Instructions</h2>
+                <div>
+                    <span readonly rows="4" onclick="this.select();" style="
+                    width: 50%;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 6px;
+                    background-color: #f9f9f9;
+                    font-family: monospace;
+                    font-size: 14px;
+                    resize: none;
+                ">[Tnn_Contact_Form style_type="1"]</span>
+                    </span>
+                </div>
             </div>
         </div>
         <?php
